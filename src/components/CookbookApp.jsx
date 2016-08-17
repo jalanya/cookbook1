@@ -1,5 +1,6 @@
 import React from 'react';
 import RecipeList from './RecipeList';
+import {connect} from 'react-redux';
 
 export default class CookbookApp extends React.Component {
 
@@ -11,3 +12,12 @@ export default class CookbookApp extends React.Component {
     </div>
   }
 };
+
+function mapStateToProps(state) {
+  return {
+    recipes: state.get('recipes'),
+    category: state.get('category')
+  };
+}
+
+export const CookbookAppContainer = connect(mapStateToProps)(CookbookApp);

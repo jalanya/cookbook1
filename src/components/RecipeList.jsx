@@ -9,6 +9,7 @@ export default class RecipeList extends React.Component {
   }
 
   getItems() {
+
     if (this.props.recipes) {
       return this.props.recipes.filter(
         (item) => this.props.category === 'all' || item.get('category') === this.props.category
