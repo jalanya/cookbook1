@@ -6,11 +6,11 @@ import RecipesPage from './components/recipe/RecipesPage';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={RecipesPage} />
-    <Route path="recipes" component={RecipesPage} />
-    <Route path="recipes/pastas" component={RecipesPage} />
-    <Route path="recipes/salads" component={RecipesPage} />
-    <Route path="recipes/meat" component={RecipesPage} />
-    <Route path="recipes/sesserts" component={RecipesPage} />
+    <IndexRoute component={HomePage} />
+    <Route path="recipes/:category" component={RecipesPage} />
+    <Route path="recipes/:category" component={RecipesPage} />
+    <Route path="recipes/:category" component={RecipesPage} />
+    <Route path="recipes/:category" component={RecipesPage} />
+    <Route path="recipes/:category" component={RecipesPage} />
   </Route>
 );

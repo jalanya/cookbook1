@@ -19,7 +19,10 @@ class RecipesPage extends React.Component {
   }
 
   render() {
-    const {recipes} = this.props;
+
+    var recipes = this.props.recipes.filter(
+                recipe => this.props.params.category == 'all' || recipe.categoryTag === this.props.params.category
+    );
 
     return (
       <div>
@@ -28,7 +31,7 @@ class RecipesPage extends React.Component {
                value="Add Recipe"
                className="btn btn-primary"
                onClick={this.redirectToAddRecipePage}/>
-        <RecipeList recipes={recipes}/>
+             <RecipeList recipes={recipes}/>
       </div>
     );
   }

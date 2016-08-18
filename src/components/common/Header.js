@@ -5,7 +5,7 @@ import LoadingDots from './LoadingDots';
 const Header = ({loading}) => {
   return (
     <div>
-      <Link to="/recipes" activeClassName="active">All Recipes</Link>
+      <Link to="/recipes/all" activeClassName="active">All Recipes</Link>
       {" | "}
       <Link to="/recipes/pastas" activeClassName="active">Pastas</Link>
       {" | "}
@@ -13,7 +13,7 @@ const Header = ({loading}) => {
       {" | "}
       <Link to="/recipes/meat" activeClassName="active">Meat</Link>
       {" | "}
-      <Link to="/recipes/sesserts" activeClassName="active">Desserts</Link>
+      <Link to="/recipes/desserts" activeClassName="active">Desserts</Link>
       {loading && <LoadingDots interval={100} dots={20}/>}
     </div>
   );

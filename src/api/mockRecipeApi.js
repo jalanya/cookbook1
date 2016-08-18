@@ -8,6 +8,7 @@ const recipes = [
           id: 1,
           name: 'Ceviche',
           category: 'Meat',
+          categoryTag: 'meat',
           chef: 'Roger Rabbit',
           ingredients : [
                       {
@@ -25,6 +26,7 @@ const recipes = [
           id: 2,
           name: 'Anticucho',
           category: 'Meat',
+          categoryTag: 'meat',
           chef: 'Roger Rabbit',
           ingredients : [
                       {
@@ -41,7 +43,8 @@ const recipes = [
         {
           id: 3,
           name: 'Arroz con Pollo',
-          category: 'Meat',
+          category: 'meat',
+          categoryTag: 'meat',
           chef: 'Roger Rabbit',
           ingredients : [
                       {
@@ -59,6 +62,7 @@ const recipes = [
           id: 4,
           name: 'Recipe 4',
           category: 'Pastas',
+          categoryTag: 'pastas',
           chef: 'Roger Rabbit',
           ingredients : [
                       {
@@ -76,6 +80,7 @@ const recipes = [
           id: 5,
           name: 'Recipe 5',
           category: 'Pastas',
+          categoryTag: 'pastas',
           chef: 'Roger Rabbit',
           ingredients : [
                       {
@@ -93,6 +98,7 @@ const recipes = [
           id: 6,
           name: 'Recipe 6',
           category: 'Pastas',
+          categoryTag: 'pastas',
           chef: 'Roger Rabbit',
           ingredients : [
                       {
@@ -110,6 +116,7 @@ const recipes = [
           id: 7,
           name: 'Recipe 7',
           category: 'Salads',
+          categoryTag: 'salads',
           chef: 'Gaston',
           ingredients : [
                       {
@@ -126,7 +133,8 @@ const recipes = [
         {
           id: 8,
           name: 'Recipe 8',
-          category: 'Salads',
+          category: 'salads',
+          categoryTag: 'salads',
           chef: 'Gaston',
           ingredients : [
                       {
@@ -145,7 +153,8 @@ const recipes = [
         {
           id: 9,
           name: 'Recipe 9',
-          category: 'Salads',
+          category: 'salads',
+          categoryTag: 'salads',
           chef: 'Gaston',
           ingredients : [
                       {
@@ -163,6 +172,7 @@ const recipes = [
           id: 10,
           name: 'Recipe 10',
           category: 'Desserts',
+          categoryTag: 'desserts',
           chef: 'Gaston',
           ingredients : [
                       {
@@ -180,6 +190,7 @@ const recipes = [
           id: 11,
           name: 'Recipe 11',
           category: 'Desserts',
+          categoryTag: 'desserts',
           chef: 'Gaston',
           ingredients : [
                       {
@@ -196,7 +207,8 @@ const recipes = [
         {
           id: 12,
           name: 'Recipe 12',
-          category: 'Desserts',
+          category: 'desserts',
+          categoryTag: 'desserts',
           chef: 'Gaston',
           ingredients : [
                       {
