@@ -1,4 +1,4 @@
-<h1>Cookbook Beta 0.0.0.1</h1>
+<h1>Cookbook Beta 0.0.1</h1>
 
 A web application from scratch full of cooking recipes.
 
