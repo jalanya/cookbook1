@@ -26,7 +26,7 @@ class RecipesPage extends React.Component {
 
     return (
       <div>
-        <h1>Recipes</h1>
+        <h1>All Recipes</h1>
         <input type="submit"
                value="Add Recipe"
                className="btn btn-primary"
