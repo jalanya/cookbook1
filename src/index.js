@@ -7,12 +7,6 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import {loadRecipes} from './actions/recipeActions';
-/*
-const createStoreDevTools = compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-)(createStore);
-*/
-//const store = createStoreDevTools(reducer);
 
 const store = configureStore();
 store.dispatch(loadRecipes());
