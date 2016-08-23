@@ -7,10 +7,12 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import {loadRecipes} from './actions/recipeActions';
+import {loadCategories} from './actions/categoryActions';
 import "../node_modules/materialize-css/dist/css/materialize.min.css";
 
 const store = configureStore();
 store.dispatch(loadRecipes());
+store.dispatch(loadCategories());
 
 render(
     <Provider store={store}>

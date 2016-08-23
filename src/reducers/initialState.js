@@ -1,5 +1,5 @@
 export default {
-  ingredients: [],
+  categories: [],
   recipes: [],
   ajaxCallsInProgress: 0
 };

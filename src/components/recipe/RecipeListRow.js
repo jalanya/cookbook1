@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const RecipeListRow = ({recipe}) => {
+export const RecipeListRow = ({recipe}) => {
     return(<tr>
         <td><Link to={'/recipe/' + recipe.id}>{recipe.name}</Link></td>
         <td>{recipe.chef}</td>
@@ -9,5 +9,3 @@ const RecipeListRow = ({recipe}) => {
       </tr>
     );
 }
-
-export default RecipeListRow;
