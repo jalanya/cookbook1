@@ -33,7 +33,6 @@ export default class RecipesPage extends React.Component {
 
   @autobind
   onRemoveRecipe(event) {
-    debugger;
 
     this.setState({saving: true});
 
@@ -55,9 +54,9 @@ export default class RecipesPage extends React.Component {
   }
 
   render() {
-
     var recipes = this.props.recipes.filter(
-                recipe => this.props.params.category == 'all' || recipe.category.toLowerCase() === this.props.params.category
+                recipe => (this.props.params.category == 'all' || recipe.category.toLowerCase() === this.props.params.category) ||
+                          recipe.name.startsWith(this.props.params.name)
     );
 
     return (
