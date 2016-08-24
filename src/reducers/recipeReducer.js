@@ -17,7 +17,8 @@ export default function recipeReducer(state = initialState.recipes, action) {
         ...state.filter(recipe => recipe.id !== action.recipe.id),
         action.recipe
       ];
-
+    case types.DELETE_RECIPE_SUCCESS:
+        return action.recipes;
     default:
       return state;
   }

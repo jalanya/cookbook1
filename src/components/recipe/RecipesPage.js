@@ -5,7 +5,7 @@ import * as recipeActions from '../../actions/recipeActions';
 import {RecipeList} from './RecipeList';
 import {browserHistory} from 'react-router';
 import autobind from 'autobind-decorator';
-
+import toastr from 'toastr';
 
 @connect(
   state => ({
@@ -18,6 +18,11 @@ import autobind from 'autobind-decorator';
 
 export default class RecipesPage extends React.Component {
 
+  static propTypes = {
+    recipes: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
+  };
+
   constructor(props, context) {
     super(props, context);
   }
@@ -27,14 +32,32 @@ export default class RecipesPage extends React.Component {
   }
 
   @autobind
+  onRemoveRecipe(event) {
+    debugger;
+
+    this.setState({saving: true});
+
+    this.props.actions.deleteRecipe(event.target.dataset.recipeId)
+      .then(() => this.recipeDeleted())
+      .catch(error => {
+        toastr.error(error);
+        this.setState({saving: false});
+    });
+  }
+
+  @autobind
   redirectToAddRecipePage() {
     browserHistory.push('/recipe');
+  }
+
+  recipeDeleted() {
+    toastr.success('Recipe deleted');
   }
 
   render() {
 
     var recipes = this.props.recipes.filter(
-                recipe => this.props.params.category == 'all' || recipe.categoryTag === this.props.params.category
+                recipe => this.props.params.category == 'all' || recipe.category.toLowerCase() === this.props.params.category
     );
 
     return (
@@ -44,13 +67,8 @@ export default class RecipesPage extends React.Component {
                value="Add Recipe"
                className="btn btn-primary"
                onClick={this.redirectToAddRecipePage}/>
-             <RecipeList recipes={recipes}/>
+             <RecipeList recipes={recipes} onRemoveRecipe={this.onRemoveRecipe}/>
       </div>
     );
   }
 }
-
-RecipesPage.propTypes = {
-  recipes: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
-};

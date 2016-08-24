@@ -162,7 +162,7 @@ export default class ManageRecipePage extends React.Component {
             saving={this.state.saving}
           />
         </div>
-      </div>  
+      </div>
     );
   }
 }

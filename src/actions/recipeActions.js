@@ -9,6 +9,7 @@ export function loadRecipesSuccess(recipes) {
 export function loadRecipes() {
   return async (dispatch, getState) => {
     dispatch(beginAjaxCall());
+    debugger;
     const recipes = await recipeApi.getAllRecipes();
     if (!recipes) return;
     dispatch(loadRecipesSuccess(recipes));
@@ -23,11 +24,24 @@ export function updateRecipeSuccess(recipe) {
   return {type: types.UPDATE_RECIPE_SUCCESS, recipe};
 }
 
+export function deleteRecipeSuccess(recipes) {
+  return {type: types.DELETE_RECIPE_SUCCESS, recipes};
+}
+
 export function saveRecipe(recipe) {
   return async (dispatch, getState) => {
     dispatch(beginAjaxCall());
+    debugger;
     const saveRecipe = await recipeApi.saveRecipe(recipe);
     recipe.id ? dispatch(updateRecipeSuccess(saveRecipe)) :
       dispatch(createRecipeSuccess(saveRecipe));
+  };
+}
+
+export function deleteRecipe(id) {
+  return async (dispatch, getState) => {
+    dispatch(beginAjaxCall());
+    const recipes = await recipeApi.deleteRecipe(id);
+    dispatch(deleteRecipeSuccess(recipes));
   };
 }

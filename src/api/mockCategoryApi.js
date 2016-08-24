@@ -2,20 +2,20 @@ import delay from './delay';
 
 const categories = [
     {
-        id: 'Pastas',
-        name: 'Pastas'
+      id: 'Pastas',
+      name: 'Pastas'
     },
     {
-        id: 'Salads',
-        name: 'Salads'
+      id: 'Salads',
+      name: 'Salads'
     },
     {
-        id: 'Meats',
-        name: 'Meats'
+      id: 'Meat',
+      name: 'Meat'
     },
     {
-        id: 'Desserts',
-        name: 'Desserts'
+      id: 'Desserts',
+      name: 'Desserts'
     }
 ];
 
