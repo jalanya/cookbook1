@@ -10,7 +10,7 @@ import toastr from 'toastr';
 const mapStateToProps = (state, ownProps) => {
   const recipeId = ownProps.params.id; // from the path `/course/:id`
 
-  let recipe = {id: '', name: '', category: '', chef: '', preparation: ''};
+  let recipe = {id: '', name: '', category: '', chef: '', preparation: '', ingredients: []};
 
   if (recipeId && state.recipes.length > 0) {
     recipe = getRecipeById(state.recipes, recipeId);
@@ -60,7 +60,6 @@ export default class ManageRecipePage extends React.Component {
 
   @autobind
   updateRecipeState(event) {
-    debugger;
     if (event.name) {
       let recipe = this.state.recipe;
       recipe[event.name] = event.value;
@@ -105,6 +104,42 @@ export default class ManageRecipePage extends React.Component {
       });
   }
 
+  @autobind
+  updateRecipeIngredientState(event) {
+    let recipe = this.state.recipe;
+    const newIngredient = recipe["ingredients"].find((ingredient, index) => index == event.target.dataset.row);
+    newIngredient[event.target.name] = event.target.value;
+    return this.setState({ recipe: recipe });
+  }
+
+  @autobind
+  addIngredient(event) {
+     let recipe = this.state.recipe;
+     const newOnes = Object.assign([], recipe["ingredients"]);
+     if (recipe["ingredients"].length > 9) {
+         return;
+     } else {
+         const newOne = { name: "", quantity: "" };
+         newOnes.push(newOne);
+         recipe.ingredients = newOnes;
+         return this.setState({ recipe: recipe });
+     }
+  }
+
+  @autobind
+  removeIngredient(event) {
+     debugger;
+     let recipe = this.state.recipe;
+     if (recipe.ingredients.length <= 0) {
+         return;
+     } else {
+         const newOnes = recipe["ingredients"].filter((ingredient, index) => index != event.target.dataset.row
+                                                            );
+         recipe.ingredients = newOnes;
+         return this.setState({ recipe: recipe });
+     }
+  }
+
   redirect() {
     this.setState({saving: false});
     toastr.success('Recipe saved');
@@ -113,14 +148,21 @@ export default class ManageRecipePage extends React.Component {
 
   render() {
     return (
-      <RecipeForm
-        allCategories={this.props.categories}
-        onChange={this.updateRecipeState}
-        onSave={this.saveRecipe}
-        recipe={this.state.recipe}
-        errors={this.state.errors}
-        saving={this.state.saving}
-      />
+      <div className="row">
+        <div className="col s12">
+          <RecipeForm
+            allCategories={this.props.categories}
+            onChange={this.updateRecipeState}
+            onChangeIngredient={this.updateRecipeIngredientState}
+            onAdd={this.addIngredient}
+            onRemove={this.removeIngredient}
+            onSave={this.saveRecipe}
+            recipe={this.state.recipe}
+            errors={this.state.errors}
+            saving={this.state.saving}
+          />
+        </div>
+      </div>  
     );
   }
 }

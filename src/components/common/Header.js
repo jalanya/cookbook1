@@ -4,18 +4,22 @@ import LoadingDots from './LoadingDots';
 
 const Header = ({loading}) => {
   return (
-    <div>
-      <Link to="/recipes/all" activeClassName="active">All Recipes</Link>
-      {" | "}
-      <Link to="/recipes/pastas" activeClassName="active">Pastas</Link>
-      {" | "}
-      <Link to="/recipes/salads" activeClassName="active">Salads</Link>
-      {" | "}
-      <Link to="/recipes/meat" activeClassName="active">Meat</Link>
-      {" | "}
-      <Link to="/recipes/desserts" activeClassName="active">Desserts</Link>
-      {loading && <LoadingDots interval={100} dots={20}/>}
-    </div>
+    <div className="navbar">
+       <nav className="darken-2">
+         <div className="nav-wrapper">
+          <Link to="/recipes/all" activeClassName="active">Recipes</Link>
+          {" | "}
+          <Link to="/recipes/pastas" activeClassName="active">Pastas</Link>
+          {" | "}
+          <Link to="/recipes/salads" activeClassName="active">Salads</Link>
+          {" | "}
+          <Link to="/recipes/meat" activeClassName="active">Meat</Link>
+          {" | "}
+          <Link to="/recipes/desserts" activeClassName="active">Desserts</Link>
+          {loading && <LoadingDots interval={100} dots={20}/>}
+        </div>
+      </nav>
+   </div>
   );
 };
 
