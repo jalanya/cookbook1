@@ -40,7 +40,8 @@ export default class Header extends React.Component {
       return(
         <div className="navbar">
            <nav className="darken-2">
-             <div className="nav-wrapper">
+             <a href="#" className="brand-logo">Cookbook</a>
+             <div className="nav-wrapper container">
               <Link to="/recipes/all" activeClassName="active">Recipes</Link>
               {" | "}
               <Link to="/recipes/pastas" activeClassName="active">Pastas</Link>
@@ -51,12 +52,14 @@ export default class Header extends React.Component {
               {" | "}
               <Link to="/recipes/desserts" activeClassName="active">Desserts</Link>
               {this.props.loading && <LoadingDots interval={100} dots={20}/>}
-              <div className="right hide-on-med-and-down">
-                 <input id="search" type="search" placeholder="Search recipe"
-                   onKeyPress={this.searchRecipes}/>
-                  <label for="search"><i class="material-icons"></i></label>
-                  <i class="material-icons">close</i>
-               </div>
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <li>
+                   <input id="search" type="search" placeholder="Recipe name"
+                     onKeyPress={this.searchRecipes}/>
+                </li>
+                <li><i className="material-icons"></i>
+                </li>
+              </ul>
             </div>
           </nav>
        </div>
