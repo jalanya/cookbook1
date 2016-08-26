@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import recipeApi from '../api/mockRecipeApi';
+import ApiClient from '../api/ApiClient';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function loadRecipesSuccess(recipes) {
@@ -9,10 +10,12 @@ export function loadRecipesSuccess(recipes) {
 export function loadRecipes() {
   return async (dispatch, getState) => {
     dispatch(beginAjaxCall());
-    debugger;
-    const recipes = await recipeApi.getAllRecipes();
-    if (!recipes) return;
-    dispatch(loadRecipesSuccess(recipes));
+
+    ApiClient.getAllRecipes().end((err, res) => {
+      console.log(res);
+      dispatch(loadRecipesSuccess(res.body));
+    });
+
   };
 }
 
