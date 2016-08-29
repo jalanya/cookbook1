@@ -87,7 +87,6 @@ export default class ManageRecipePage extends React.Component {
 
   @autobind
   saveRecipe(event) {
-    debugger;
     event.preventDefault();
 
     if (!this.recipeFormIsValid()) {
@@ -128,7 +127,6 @@ export default class ManageRecipePage extends React.Component {
 
   @autobind
   removeIngredient(event) {
-     debugger;
      let recipe = this.state.recipe;
      if (recipe.ingredients.length <= 0) {
          return;

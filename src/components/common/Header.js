@@ -30,7 +30,6 @@ export default class Header extends React.Component {
 
     @autobind
     searchRecipes(event) {
-      debugger;
        if(event.key === 'Enter'){
          this.context.router.push('/recipe/search/' + event.target.value);
        }
