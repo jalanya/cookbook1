@@ -10,7 +10,9 @@ class App extends React.Component {
         <Header
           loading={this.props.loading}
         />
-        {this.props.children}
+        <div className="container-fluid">
+              {this.props.children}
+        </div>
         <Footer />
       </div>
     );

@@ -7,7 +7,11 @@ export const RecipeForm = ({recipe, allCategories, onSave, onChange, onChangeIng
     return (
           <div>
             <div className="card-panel">
-              <h4 className="header">Manage Recipe</h4>
+              <div className="row">
+                <div className="col s12">
+                  <h4 className="header">Manage Recipe</h4>
+                </div>
+              </div>
               <div className="row">
                 <form className="col s12">
                   <div className="row">
@@ -16,7 +20,8 @@ export const RecipeForm = ({recipe, allCategories, onSave, onChange, onChangeIng
                       label="Name"
                       value={recipe.name}
                       onChange={onChange}
-                      error={errors.name}/>
+                      error={errors.name}
+                      wrapperClass="s12"/>
                   </div>
                   <div className="row">
                     <SelectInput
@@ -25,7 +30,8 @@ export const RecipeForm = ({recipe, allCategories, onSave, onChange, onChangeIng
                       value={recipe.category}
                       defaultOption="Select category"
                       options={allCategories}
-                      onChange={onChange} error={errors.category}/>
+                      onChange={onChange} error={errors.category}
+                      wrapperClass="s12"/>
                   </div>
                   <div className="row">
                     <TextInput
@@ -33,7 +39,8 @@ export const RecipeForm = ({recipe, allCategories, onSave, onChange, onChangeIng
                       label="Chef"
                       value={recipe.chef}
                       onChange={onChange}
-                      error={errors.chef}/>
+                      error={errors.chef}
+                      wrapperClass="s12"/>
                   </div>
                   <IngredientForm
                       name="ingredients"
@@ -48,15 +55,18 @@ export const RecipeForm = ({recipe, allCategories, onSave, onChange, onChangeIng
                           label="Preparation"
                           value={recipe.preparation}
                           onChange={onChange}
-                          error={errors.preparation}/>
+                          error={errors.preparation}
+                          wrapperClass="s12"/>
                   </div>
                   <div className="row">
-                    <input
-                      type="submit"
-                      disabled={saving}
-                      value={saving ? 'Saving...' : 'Save'}
-                      className="btn btn-primary"
-                      onClick={onSave}/>
+                    <div className="input-field col s12">
+                      <input
+                        type="submit"
+                        disabled={saving}
+                        value={saving ? 'Saving...' : 'Save'}
+                        className="btn btn-primary"
+                        onClick={onSave}/>
+                    </div>
                   </div>
                 </form>
               </div>

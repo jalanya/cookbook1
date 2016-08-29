@@ -13,7 +13,7 @@ export const RecipeListRow = ({recipe, onRemoveRecipe}) => {
                 name="remove"
                 value="-"
                 onClick={onRemoveRecipe}
-                className="btn-floating btn-large waves-effect waves-light red"/>
+                className="btn-floating btn-small red"/>
         </td>
       </tr>
     );

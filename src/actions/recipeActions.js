@@ -15,19 +15,21 @@ export function updateRecipeSuccess(recipe) {
   return {type: types.UPDATE_RECIPE_SUCCESS, recipe};
 }
 
-export function deleteRecipeSuccess(recipes) {
-  return {type: types.DELETE_RECIPE_SUCCESS, recipes};
+export function deleteRecipeSuccess(id) {
+  return {type: types.DELETE_RECIPE_SUCCESS, id};
 }
 
 export function loadRecipes() {
   return async (dispatch, getState) => {
     dispatch(beginAjaxCall());
 
-    ApiClient.getAllRecipes().end((err, res) => {
+    let client = new ApiClient();
+
+    client.getAllRecipes().end((err, res) => {
       console.log(res);
       dispatch(loadRecipesSuccess(res.body));
     });
-
+    client = null;
   };
 }
 
@@ -38,30 +40,43 @@ export function saveRecipe(recipe) {
     recipe.id ? dispatch(updateRecipeSuccess(saveRecipe)) :
       dispatch(createRecipeSuccess(saveRecipe));
       */
-      dispatch(beginAjaxCall());
-      ApiClient.saveRecipe(recipe).end((err, res)=>{
-           if(!err){
-               if(res.statusCode === 200
-                   && res.body.message === "success"){
-                   dispatch(createRecipeSuccess(res.body.data));
-                   //dispatch(createRecipe(res.body.data));
-               }else{
-                   toastr.error("Error: " + res.body.message);
+      //return new Promise((resolve, reject) => {
+            dispatch(beginAjaxCall());
+            debugger;
+            let client = new ApiClient();
+            const result = client.saveRecipe(recipe).end((err, res) => {
+               if (!err) {
+                   if (res.statusCode === 200
+                       && res.body.message === "success") {
+                       recipe.id ? dispatch(updateRecipeSuccess(res.body.data)) :
+                          dispatch(createRecipeSuccess(res.body.data));
+                      //resolve();
+                   } else {
+                       toastr.error("Error: " + res.body.message);
+                      //reject();
+                   }
+               } else {
+                   toastr.error(err);
+                   //dispatch(createRecipeError(err));
                }
-           }else{
-               toastr.error(err);
-               //dispatch(createRecipeError(err));
-           }
-       });
-       //recipe.id ? dispatch(updateRecipeSuccess(saveRecipe)) :
-        //dispatch(createRecipeSuccess(saveRecipe));
+            });
+            client = null;
+     //});
   };
 }
 
 export function deleteRecipe(id) {
   return async (dispatch, getState) => {
     dispatch(beginAjaxCall());
-    const recipes = await recipeApi.deleteRecipe(id);
-    dispatch(deleteRecipeSuccess(recipes));
+    let client = new ApiClient();
+
+    const result = client.deleteRecipe(id).end((err, res)=>{
+                    if(!err){
+                        dispatch(deleteRecipeSuccess(id));
+                    }else{
+                        //dispatch(deleteRecipeError(err));
+                    }
+                });
+    client = null;
   };
 }

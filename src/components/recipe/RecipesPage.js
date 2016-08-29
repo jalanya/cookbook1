@@ -60,13 +60,17 @@ export default class RecipesPage extends React.Component {
     );
 
     return (
-      <div>
+      <div className="row">
+        <div className="col s12">
         <h1>Recipes</h1>
         <input type="submit"
                value="Add Recipe"
                className="btn btn-primary"
                onClick={this.redirectToAddRecipePage}/>
+        </div>     
+        <div className="col s12">
              <RecipeList recipes={recipes} onRemoveRecipe={this.onRemoveRecipe}/>
+        </div>
       </div>
     );
   }
